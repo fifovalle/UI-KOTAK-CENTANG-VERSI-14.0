@@ -1,0 +1,102 @@
+:root {
+  --warna-hati: rgb(255, 91, 137);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000;
+}
+
+.wadah-hati {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transition: 0.3s;
+}
+
+.wadah-hati .kotakCentang {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.wadah-hati .wadah-svg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wadah-hati .garis-svg,
+.wadah-hati .svg-terisi {
+  fill: var(--warna-hati);
+  position: absolute;
+}
+
+.wadah-hati .svg-terisi {
+  animation: animasi-svg-terisi 1s;
+  display: none;
+}
+
+.wadah-hati .svg-merayakan {
+  position: absolute;
+  animation: animasi-svg-merayakan 0.5s;
+  animation-fill-mode: forwards;
+  display: none;
+  stroke: var(--warna-hati);
+  fill: var(--warna-hati);
+  stroke-width: 2px;
+}
+
+.wadah-hati .kotakCentang:checked ~ .wadah-svg .svg-terisi {
+  display: block;
+}
+
+.wadah-hati .kotakCentang:checked ~ .wadah-svg .svg-merayakan {
+  display: block;
+}
+
+@keyframes animasi-svg-terisi {
+  0% {
+    transform: scale(0);
+  }
+
+  25% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    transform: scale(1);
+    filter: brightness(1.5);
+  }
+}
+
+@keyframes animasi-svg-merayakan {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    filter: brightness(1.5);
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+    display: none;
+  }
+}
